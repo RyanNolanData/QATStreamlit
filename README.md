@@ -12,9 +12,9 @@ This addresses a few issues that QAT Currently has
   - QAT Advanced queries can take a while to run. This tool allows for a user to write as many queries as they want and it’ll run in the background
 
 Important Project links:
--http://www.peterbroda.me/crosswords/wordlist/
--https://q-a-t-crossword.streamlit.app/
--https://www.quinapalus.com/qat.html
+- Broda Word List (Cleaned and Sorted in Github): http://www.peterbroda.me/crosswords/wordlist/
+- Streamlit App: https://q-a-t-crossword.streamlit.app/
+- QAT Program: https://www.quinapalus.com/qat.html
 
 If Streamlit appears to be offline, refresh the app. Streamlit does this to save resources on their server. Additionally if it crashes, reach out to Ryan: ryannolandata@gmail.com to reboot the app.
 
