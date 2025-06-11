@@ -13,7 +13,8 @@ This addresses a few issues that QAT Currently has
 
 Important Project links:
 -http://www.peterbroda.me/crosswords/wordlist/
--https://crossword-project.streamlit.app/
+-https://q-a-t-crossword.streamlit.app/
+-https://www.quinapalus.com/qat.html
 
 If Streamlit appears to be offline, refresh the app. Streamlit does this to save resources on their server. Additionally if it crashes, reach out to Ryan: ryannolandata@gmail.com to reboot the app.
 
@@ -74,67 +75,56 @@ A=(1-3:*);B=(1-3:*);A;B;AB
 ---
 
 ## 🧪 Word Pattern Matcher Test Cases
-| Tool                 | Test Input                    | Description                    | Example  Output    |
-|----------------------|-------------------------------|--------------------------------|--------------------|
-| Word Pattern Matcher | `l......m`                    | Basic Pattern with Dots        | labdanum           |
-| Word Pattern Matcher | `l*m`                         | Wildcard Pattern               | labium             |
-| Word Pattern Matcher | `#at`                         | Consonant Wildcard             | bat                |
-| Word Pattern Matcher | `l@g`                         | Vowel Wildcard                 | lag                |
-| Word Pattern Matcher | `#@#`                         | Mixed Wildcards                | bab                |
-| Word Pattern Matcher | `4-6:*ing`                    | Length Range                   | bing               |
-| Word Pattern Matcher | `/triangle`                   | Anagram Search                 | integral           |
-| Word Pattern Matcher | `/tri*`                       | Anagram Plus Search            | rti                |
-
-
-| QAT Pattern Search | `A=(1-3:*);B=(1-3:*);A;B;AB`                                    | soy | es || soyes  |
-| QAT Pattern Search | `A=(2-3:*);B=(3-4:*);A;B;AB`                                    | (Expected Output)  |
-| QAT Pattern Search | `A=(1-2:*);B=(6-7:*);A;B;AB`                                    | (Expected Output)  |
-| QAT Pattern Search | `A=(1-3:*);B=(1-3:*);C=(1-2:*);A;B;C;ABC`                       | (Expected Output)  |
-| QAT Pattern Search | `A=(2:*);B=(2:*);C=(4:*);ABC;CAB`                               | (Expected Output)  |
-| QAT Pattern Search | `A=(1:*);B=(1:*);C=(1:*);D=(1:*);E=(1:*);F=(1:*);ABCDEF;FEDCBA` | (Expected Output)  |
-| QAT Pattern Search | `A=(2:*);B=(2:*);C=(2:*);ABC;CAB`                               | (Expected Output)  |
-| QAT Pattern Search | `A=(2:*);B=(1:*);C=(2:*);D=(1:*);ABCD;CDAB`                     | (Expected Output)  |
-| QAT Pattern Search | `A=(1:@);B=(2:#*);C=(1:@);ABC;CBA`                              | (Expected Output)  |
-| QAT Pattern Search | `A=(2:[!bern]*);B=(2:*);C=(1:f*);ABC`                           | (Expected Output)  |
-| QAT Pattern Search | `A=(2:[!bern][bern]);B=(2:*);C=(1:f*);ABC`                      | (Expected Output)  |
-| QAT Pattern Search | `A=(2:[bern]*);B=(2:*);C=(1:f*);ABC`                            | (Expected Output)  |
-| QAT Pattern Search | `A=(2:[bern]*);B=(2:*);C=(1:f*);ABC..`                          | (Expected Output)  |
-| QAT Pattern Search | `A=(1:[clrt]);B=(3:*);AB`                                       | (Expected Output)  |
-| QAT Pattern Search | `A=(3:c*);B=(2:*);AB`                                           | (Expected Output)  |
-| QAT Pattern Search | `A=(2:*);B=(3:[!xyz]);AB`                                       | (Expected Output)  |
-| QAT Pattern Search | `A=(2:*);B=(2:*);C=(2:r*);A;B;C;postABC....`                    | (Expected Output)  |
-| QAT Pattern Search | `A=(3:*);B=(2:*);C=(3:*);caA.;braB;cC..;stABC..`                | (Expected Output)  |
-| QAT Pattern Search | `A=(2:*);B=(2:*);C=(3:*);abA;reB;mixC;ABC.....`                 | (Expected Output)  |
-| QAT Pattern Search | `A=(2:*);B=(3:*);C=(2:*);startA.....;inB;cC;ABC`                | (Expected Output)  |
-| QAT Pattern Search | `A=(2:*);B=(2:*);C=(3:*);preA....;reB;cC;ABC`                   | (Expected Output)  |
-| QAT Pattern Search | `A=(2:#@);B=(3:@##);AB`                                         | (Expected Output)  |
-| QAT Pattern Search | `A=(2:@#);B=(3:#@#);C=(2:*);preA..;reB.;cC;ABC.`                | (Expected Output)  |
+| Test Input           | Description                    | Example  Output    |
+|----------------------|--------------------------------|--------------------|
+| `l......m`           | Basic Pattern with Dots        | labdanum           |
+| `l*m`                | Wildcard Pattern               | labium             |
+| `#at`                | Consonant Wildcard             | bat                |
+| `l@g`                | Vowel Wildcard                 | lag                |
+| `#@#`                | Mixed Wildcards                | bab                |
+| `4-6:*ing`           | Length Range                   | bing               |
+| `/triangle`          | Anagram Search                 | integral           |
+| `/tri*`              | Anagram Plus Search            | rti                |
 
 
 
+For the Word Pattern Matcher the App currently prints out all the elements. For Example What variable A is and the output after the variables. Minus one bug which is addressed below. This is not how QAT prints out words. A future improvement could be Debug Mode vs Live QAT Output.
+
+## 🧪 Word Pattern Matcher Test Cases
+| Test Input                                                      | Description                     | Example Output                    |
+|-----------------------------------------------------------------|---------------------------------|-----------------------------------|
+| `A=(3:*);A`                                                     | 1 Variable                      | bim || bim                        |
+| `A=(3:c*);B=(2:*);AB`                                           | 2 Variable                      | soy | es || soyes                 |
+| `A=(3:l*);A`                                                    | 1 Variable Start Letter         | lyn || lyn                        |
+| `A=(2:*);B=(3:*);AB`                                            | 2 Variable                      | ks | tar || kstar                 |
+| `A=(2:@#);A`                                                    | 1 Variable &@                   | ox || ox                          |
+| `A=(2:#@);B=(3:@##);AB`                                         | 2 Variable &@                   | be | ast || beast                 |
+| `A=(1:#);B=(1:@);C=(1:#);ABC`                                   | 3 Variable &@                   | y | e | p || yep                  |
+| `A=(1-3:*);B=(1-3:*);A;B;AB`                                    | 2 Variable Length Range         | bim | mer || bimmer               |
 
 
 
-
-Note rework this section
-
-
-
-
-
-| 7      | Simple Variable Definition and Use         | `A=(3:*);A`                                 |
-| 8      | Two Variable Combination                   | `A=(2:*);B=(3:*);AB`                         |
-| 9      | Variable with Pattern Constraints          | `A=(1:#);B=(1:@);C=(1:#);ABC`               |
-| 10     | Reverse Variable                           | `A=(3:*);A;~A`                              |
-| 11     | Comparison of Variable Expressions         | `A=(3:*);B=(1:*);C=(2:*);ABC;CBA`           |
-| 14     | Variable with Vowel Constraint             | `A=(2:@#);A`                                |
-| 15     | Complex Variable Pattern                   | `A=(3:l*);A`                                |
-| 16     | Multiple Variable Comparison               | `A=(2:*);B=(2:*);C=(2:*);ABC;CBA`           |
-| 17     | Complex Query with Multiple Variables      | `A=(1:*);B=(1:*);C=(1:*);D=(1:*);E=(1:*);ABCDE;EDCBA` |
-| 18     | Mixed Wildcards in Variables               | `A=(2:#@);B=(3:@##);AB`                     |
-| 19     | Bidirectional Expansion                    | `A=(2:*);B=(1:*);C=(2:*);ABC;CBA`           |
-| 20     | Embedded Symmetry                          | `A=(1:*);B=(3:*);C=(1:*);ABC;CBA`           |
-| 21     | Vowel-Consonant Mirror                     | `A=(1:@);B=(2:#*);C=(1:@);ABC;CBA`          |
+| `A=(2-3:*);B=(3-4:*);A;B;AB`                                 | 2 Variable Length Range         | soy | es || soyes                 |
+| `A=(1-2:*);B=(6-7:*);A;B;AB`                               | 2 Variable Length Range         | soy | es || soyes                 |
+| `A=(1-3:*);B=(1-3:*);C=(1-2:*);A;B;C;ABC`                   | 3 Variable Length Range         | soy | es || soyes                 |
+| `A=(2:*);B=(2:*);C=(4:*);ABC;CAB`                               | 3 Variable Rearrangement*       | soy | es || soyes                 |
+| `A=(2:*);B=(2:*);C=(2:*);ABC;CAB`                               | 3 Variable Rearrangement*       | soy | es || soyes                 |
+| `A=(2:*);B=(1:*);C=(2:*);D=(1:*);ABCD;CDAB`                     | 4 Variable Rearrangement*       | soy | es || soyes                 |
+| `A=(1:*);B=(1:*);C=(1:*);D=(1:*);E=(1:*);ABCDE;EDCBA`           | 5 Variable Rearrangement*       | soy | es || soyes                 |
+| `A=(1:*);B=(1:*);C=(1:*);D=(1:*);E=(1:*);F=(1:*);ABCDEF;FEDCBA` | 6 Variable Rearrangement*       | soy | es || soyes                 |
+| `A=(1:@);B=(2:#*);C=(1:@);ABC;CBA`                              | 4 Variable Rearrangement + &@   | soy | es || soyes                 |
+| `A=(1:[clrt]);B=(3:*);AB`                                       | 2 Variable Word Constraints     | soy | es || soyes                 |
+| `A=(2:*);B=(3:[!xyz]);AB`                                       | 2 Variable Word Constraints     | soy | es || soyes                 |
+| `A=(2:[!bern]*);B=(2:*);C=(1:f*);ABC`                           | 3 Variable Word Constraints     | soy | es || soyes                 |
+| `A=(2:[bern]*);B=(2:*);C=(1:f*);ABC`                            | 3 Variable Word Constraints     | soy | es || soyes                 |
+| `A=(2:[!bern][bern]);B=(2:*);C=(1:f*);ABC`                      | 3 Variable Word Constraints     | soy | es || soyes                 |
+| `A=(2:[bern]*);B=(2:*);C=(1:f*);ABC..`                          | 3 Variable Word Constraints +.  | soy | es || soyes                 |
+| `A=(2:*);B=(2:*);C=(2:r*);A;B;C;postABC....`                    | 3 Variable preword + .          | soy | es || soyes                 |
+| `A=(2:*);B=(2:*);C=(3:*);preA....;reB;cC;ABC` `                 | 3 Variable Mix                  | soy | es || soyes                 |
+| `A=(2:*);B=(2:*);C=(3:*);abA;reB;mixC;ABC.....`                 | 3 Variable Mix  + .             | soy | es || soyes                 |
+| `A=(2:*);B=(3:*);C=(2:*);startA.....;inB;cC;ABC`                | 3 Variable Mix preword + .      | soy | es || soyes                 |
+| `A=(3:*);B=(2:*);C=(3:*);caA.;braB;cC..;stABC..`                | 3 Variable Mix preword + .      | soy | es || soyes                 |
+| `A=(2:@#);B=(3:#@#);C=(2:*);preA..;reB.;cC;ABC.`                | 3 Variable Mix preword + .@#    | soy | es || soyes                 |
 
 
 
@@ -142,28 +132,6 @@ Note rework this section
 
 
 
-
-
-| 2      | A=(3:*);B=(2:*);C=(3:*);caA.;braB;cC..;stABC..                          | `l*m`                                       |
-| 3      | A=(2:[!bern]);B=(2:*);C=(1:f*);ABC                        | `#at`                                       |
-| 4      | Vowel Wildcard                             | `l@g`                                       |
-| 5      | Mixed Wildcards                            | `#@#`                                       |
-| 6      | Length Range                               | `4-6:*ing`                                  |
-| 7      | Simple Variable Definition and Use         | `A=(3:*);A`                                 |
-| 8      | Two Variable Combination                   | `A=(2:*);B=(3:*);AB`                         |
-| 9      | Variable with Pattern Constraints          | `A=(1:#);B=(1:@);C=(1:#);ABC`               |
-| 10     | Reverse Variable                           | `A=(3:*);A;~A`                              |
-| 11     | Comparison of Variable Expressions         | `A=(3:*);B=(1:*);C=(2:*);ABC;CBA`           |
-| 12     | Anagram Search                             | `/triangle`                                 |
-| 13     | Anagram Plus Search                        | `/tri*`                                     |
-| 14     | Variable with Vowel Constraint             | `A=(2:@#);A`                                |
-| 15     | Complex Variable Pattern                   | `A=(3:l*);A`                                |
-| 16     | Multiple Variable Comparison               | `A=(2:*);B=(2:*);C=(2:*);ABC;CBA`           |
-| 17     | Complex Query with Multiple Variables      | `A=(1:*);B=(1:*);C=(1:*);D=(1:*);E=(1:*);ABCDE;EDCBA` |
-| 18     | Mixed Wildcards in Variables               | `A=(2:#@);B=(3:@##);AB`                     |
-| 19     | Bidirectional Expansion                    | `A=(2:*);B=(1:*);C=(2:*);ABC;CBA`           |
-| 20     | Embedded Symmetry                          | `A=(1:*);B=(3:*);C=(1:*);ABC;CBA`           |
-| 21     | Vowel-Consonant Mirror                     | `A=(1:@);B=(2:#*);C=(1:@);ABC;CBA`          |
 
 
 
@@ -197,17 +165,20 @@ QAT Mode handles highly advanced queries with:
 - Example 1: 'A=(1:*);B=(1:*);C=(1:*);D=(1:*);E=(1:*);F=(1:*);ABCDEF;FEDCBA'
 This will only show us the result output: FEDCBA and ignore ABCDEF
 
-
 ### Multiple Variables in a row: 
 - Example 1: 'A=(1:);B=(1:);C=(1:*);AABBCC'
 - Example 2: 'A=(1:);B=(1:);C=(1:*);AAABCCC'
 Logic was never built into the app
 
+### Parital Variables in a row: 
+- Example 1: 'A=(1:);B=(1:);C=(1:*);A;AB;.CA'
+- Example 2: 'A=(1:);B=(1:);C=(1:*);CA;paA.;.A.'
+Logic was never built into the app
+
 ### Partial Decomposition of Many Variables
 - Example 1: A=(3:);B=(1:);C=(2:);D=(2:);E=(1:);F=(2:);G=(1:);H=(1:);I=(1:);J=(1:);K=(1:);L=(2:);M=(1:*);AB;eCD;yEF;lGHIJ;KLM;GKLI;HECA BDFJM
 cExample 2: A=(2:);B=(2:);C=(2:);D=(2:);E=(2:*);AB;Cll;DotE;reACD;peBE
-This works on simpler expressions but fails once we expand out
-
+This works on simpler expressions but fails once we expand out. Due to multiple va
 
 ### More Advanced Queries to try when these features are included
 - A=(1:);B=(1:);C=(1:);D=(1:);E=(1:);F=(1:);G=(1:*);ABCDEFG;D.BAGFE
@@ -226,6 +197,9 @@ Results might also display the score, and that maybe the score could even be cha
 
 As well as changing a word's score, I'd love to one day be able to remove a word entirely.
 
+###Debug Mode vs QAT Output
+For the Word Pattern Matcher the App currently prints out all the elements. For Example What variable A is and the output after the variables. Minus one bug which is addressed below. This is not how QAT prints out words. A future improvement could be Debug Mode vs Live QAT Output.
+
 ---
 
 ## ✨ Open Source Involvement
@@ -241,6 +215,7 @@ Current Contributers:
 - Ryan Nolan (V1 Creator)
 
 ## 📝 Changelog
+- V1 Published 6/11/25
 Coming Soon
 
 
