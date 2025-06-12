@@ -166,7 +166,7 @@ QAT Mode handles highly advanced queries with:
 * Wildcard rules inside variables: `@`, `#`, custom regex
 * Embedded and post-fixed sequences: `startA.....`, `reB;cC`
 * Full expression composition across many variables:
-  `A=(1:*);B=(1:*);C=(1:*);D=(1:*);E=(1:*);F=(1:*);ABCDEF;FEDCBA`
+  `A=(1:*);B=(1:*);C=(1:*);D=(1:*);E=(1:*);F=(1:*);FEDCBA`
 
 ---
 
@@ -216,6 +216,8 @@ As well as changing a word's score, I'd love to one day be able to remove a word
 
 \###Debug Mode vs QAT Output
 For the Word Pattern Matcher the App currently prints out all the elements. For Example What variable A is and the output after the variables. Minus one bug which is addressed below. This is not how QAT prints out words. A future improvement could be Debug Mode vs Live QAT Output.
+
+
 
 ---
 
