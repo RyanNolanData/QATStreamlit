@@ -138,7 +138,7 @@ For the Word Pattern Matcher the App currently prints out all the elements. For 
     <tr><td><code>A=(2:[bern]*);B=(2:*);C=(1:f);ABC</code></td><td>3 Variable Word Constraints</td><td>ru &#124; bo &#124; f &#124;&#124; rubof</td></tr>
     <tr><td><code>A=(2:[!bern][bern]);B=(2:*);C=(1:f);ABC</code></td><td>3 Variable Word Constraints</td><td>gr &#124; of &#124; f &#124;&#124; groff</td></tr>
     <tr><td><code>A=(2:[bern]*);B=(2:*);C=(1:f);ABC..</code></td><td>3 Variable Word Constraints +.</td><td>bi &#124; ds &#124; f &#124;&#124; bidsfor</td></tr>
-    <tr><td><code>A=(2:*);B=(2:*);C=(2:r*);A;B;C;postABC....</code></td><td>3 Variable preword + .</td><td>soy &#124; es &#124;&#124; soyes</td></tr>
+    <tr><td><code>A=(2:*);B=(2:*);C=(2:r*);A;B;C;postABC....</code></td><td>3 Variable preword + .</td><td>mi &#124; st &#124; re &#124;&#124; postmistresses </td></tr>
     <tr><td><code>A=(2:*);B=(2:*);C=(3:*);preA....;reB;cC;ABC</code></td><td>3 Variable Mix</td><td>prestwick &#124; ream &#124; cens &#124;&#124; stamens</td></tr>
     <tr><td><code>A=(2:*);B=(2:*);C=(3:*);abA;reB;mixC;ABC.....</code></td><td>3 Variable Mix + .</td><td>absi &#124; rest &#124; mixers &#124; sistersinlaw</td></tr>
     <tr><td><code>A=(2:*);B=(3:*);C=(2:*);startA.....;inB;cC;ABC</code></td><td>3 Variable Mix preword + .</td><td>startingslow &#124; iname &#124; cal &#124;&#124; inameal</td></tr>
