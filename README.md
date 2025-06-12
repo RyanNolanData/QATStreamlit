@@ -67,9 +67,6 @@ If Streamlit appears to be offline, refresh the app. Streamlit does this to save
 # Simple pattern
 5:l@n#f*m
 
-# Variable equation
-A=(4:*); B=(3:*); AB
-
 # Anagram search
 /landform
 ```
