@@ -117,7 +117,6 @@ For the Word Pattern Matcher the App currently prints out all the elements. For 
   </thead>
   <tbody>
     <tr><td><code>A=(3:*);A</code></td><td>1 Variable</td><td>bim &#124;&#124; bim</td></tr>
-    <tr><td><code>A=(3:c*);B=(2:*);AB</code></td><td>2 Variable</td><td>soy &#124; es &#124;&#124; soyes</td></tr>
     <tr><td><code>A=(3:l*);A</code></td><td>1 Variable Start Letter</td><td>lyn &#124;&#124; lyn</td></tr>
     <tr><td><code>A=(2:*);B=(3:*);AB</code></td><td>2 Variable</td><td>ks &#124; tar &#124;&#124; kstar</td></tr>
     <tr><td><code>A=(2:@#);A</code></td><td>1 Variable &@</td><td>ox &#124;&#124; ox</td></tr>
