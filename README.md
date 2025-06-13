@@ -168,6 +168,12 @@ QAT Mode handles highly advanced queries with:
 
 ## ✨ Future Improvements
 
+### multiple variables in different orders:
+
+* Example 1: 'A=(1:*);B=(1:*);C=(1:*);D=(1:*);E=(1:*);F=(1:*);ABCDEF;FEDCBA'
+  In the current app, this will only show us the result output: FEDCBA and ignore ABCDEF
+* Example 2: (2:*);B=(2:*);C=(2:*);ABC;CAB
+
 ### Multiple Variables in a row:
 
 * Example 1: 'A=(1:*);B=(1:*);C=(1:\*);AABBCC'
@@ -180,10 +186,7 @@ QAT Mode handles highly advanced queries with:
 * Example 2: 'A=(1:*);B=(1:*);C=(1:\*);CA;paA.;.A.'
   Logic was never built into the app
 
-### multiple variables in different orders:
 
-* Example 1: 'A=(1:*);B=(1:*);C=(1:*);D=(1:*);E=(1:*);F=(1:*);ABCDEF;FEDCBA'
-  In the current app, this will only show us the result output: FEDCBA and ignore ABCDEF
 
 ### Partial Decomposition of Many Variables
 
@@ -210,7 +213,7 @@ Results might also display the score, and that maybe the score could even be cha
 
 As well as changing a word's score, I'd love to one day be able to remove a word entirely.
 
-\###Debug Mode vs QAT Output
+### Debug Mode vs QAT Output
 For the Word Pattern Matcher the App currently prints out all the elements. For Example What variable A is and the output after the variables. Minus one bug which is addressed below. This is not how QAT prints out words. A future improvement could be Debug Mode vs Live QAT Output.
 
 
