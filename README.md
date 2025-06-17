@@ -26,6 +26,8 @@ Important Project links:
 
 If Streamlit appears to be offline, refresh the app. Streamlit does this to save resources on their server. Additionally if it crashes, reach out to Ryan: [ryannolandata@gmail.com](mailto:ryannolandata@gmail.com) to reboot the app.
 
+You're welcome to use this as the foundation for your own QAT/Word project. While this will serve as the central repository, feel free to modify it and create your own version as needed.
+
 ---
 
 ## 🚀 Features
